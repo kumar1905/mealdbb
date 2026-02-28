@@ -1,0 +1,4 @@
+com\example\mealdb\service\MealService.class
+com\example\mealdb\MealDbApplication.class
+com\example\mealdb\web\MealController.class
+com\example\mealdb\service\dto\MealResult.class

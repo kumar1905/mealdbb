@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>MealDB - Least Ingredients</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2rem; }
+        .card { border: 1px solid #ddd; padding: 1rem; border-radius: 6px; max-width:700px }
+        img { max-width: 200px; }
+    </style>
+</head>
+<body>
+<h1>MealDB - Meal with Least Ingredients</h1>
+<form method="get" action="/">
+    <label>Search: <input name="search" th:value="${search}"/></label>
+    <button type="submit">Find</button>
+</form>
+
+<div th:if="${error}">
+    <p style="color:red" th:text="${error}"></p>
+</div>
+
+<div th:if="${result}" class="card">
+    <h2 th:text="${result.name}"></h2>
+    <p><strong>ID:</strong> <span th:text="${result.id}"></span></p>
+    <p><strong>Ingredient count:</strong> <span th:text="${result.ingredientCount}"></span></p>
+    <div th:if="${result.thumbnail}">
+        <img th:src="${result.thumbnail}" alt="thumb"/>
+    </div>
+    <h3>Ingredients</h3>
+    <ul>
+        <li th:each="ing : ${result.ingredients}" th:text="${ing}"></li>
+    </ul>
+    <h3>Instructions</h3>
+    <pre th:text="${result.instructions}"></pre>
+</div>
+
+</body>
+</html>
